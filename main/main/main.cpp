@@ -1,12 +1,16 @@
 ﻿// main.cpp : Defines the entry point for the application.
 //
-
-#include "main.h"
+#include <list>
+#include "tratar_entrada.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	int quantidade;
+	char evento;
+	while (scanf("%d %c", &quantidade, &evento) != EOF) {
+		tratarEntrada(quantidade, evento);
+	}
 	return 0;
 }
