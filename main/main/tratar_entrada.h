@@ -4,14 +4,40 @@
 #pragma once
 
 #include <iostream>
-
-// TODO: Reference additional headers your program requires here.
+#include "lista.h"
 
 std::list<int> listaRecipientes;
 std::list<int> listaResultados;
 std::list<int> listaAuxiliar;
 
+
+Lista _listaRecipientes;
+Lista _listaResultados;
+Lista _listaAuxiliar;
+
+
+
+void inicializarListas() {
+	inicia(&_listaRecipientes);
+	inicia(&_listaResultados);
+	inicia(&_listaAuxiliar);
+}
+
+
 bool verificaElementoJaExisteNaLista(int elemento) {
+	/*No *no;
+	no = _listaResultados.inicio;
+	while (no->prox != NULL) {
+		if (no->valor == elemento) {
+			return true;
+		}
+		else {
+			no = no->prox;
+		}
+	}
+
+	return false;*/
+
 	std::list<int>::iterator it;
 	it = std::find(listaResultados.begin(), listaResultados.end(), elemento);
 	if (it != listaResultados.end())

@@ -9,6 +9,7 @@ int main()
 {
 	int quantidade;
 	char evento;
+	inicializarListas();
 	while (scanf("%d %c", &quantidade, &evento) != EOF) {
 		tratarEntrada(quantidade, evento);
 	}
