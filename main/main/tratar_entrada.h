@@ -41,7 +41,7 @@ void adicionaNovasCombinacoesDeQuantidades(Lista *_listaRecipientes, Lista *_lis
 
 
 	while (noListaRecipientes != NULL) {
-		while (noListaAuxiliar != NULL && (noListaAuxiliar->prox != NULL || noListaAuxiliar->valor == 0)) {
+		while (noListaAuxiliar != NULL) {
 			int soma = noListaRecipientes->valor + noListaAuxiliar->valor;
 			int subtracao = noListaRecipientes->valor - noListaAuxiliar->valor;
 			if (subtracao > 0 && !verificaElementoJaExisteNaLista(_listaResultados, subtracao)) {
