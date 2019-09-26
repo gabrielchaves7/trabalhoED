@@ -31,11 +31,11 @@ void adicionaNovasCombinacoesDeQuantidades(Lista *_listaRecipientes, Lista *_lis
 			int soma = noListaRecipientes->valor + noListaAuxiliar->valor;
 			int subtracao = noListaRecipientes->valor - noListaAuxiliar->valor;
 			if (subtracao > 0 && !verificaElementoJaExisteNaLista(_listaResultados, subtracao)) {
-				inserirElementoNoFim(_listaResultados, subtracao);
+				inserirElementoFim(_listaResultados, subtracao);
 			}
 
 			if (soma > 0 && !verificaElementoJaExisteNaLista(_listaResultados, soma)) {
-				inserirElementoNoFim(_listaResultados, soma);
+				inserirElementoFim(_listaResultados, soma);
 			}
 
 			noListaAuxiliar = noListaAuxiliar->prox;
@@ -54,7 +54,7 @@ void tratarEntrada(int quantidade, char evento, Lista *_listaRecipientes, Lista 
 	{
 	case 'i':
 		printf("\n Inclusão\n");
-		insereElementoNaLista(_listaRecipientes, quantidade);
+		insereElementoLista(_listaRecipientes, quantidade);
 		break;
 	case 'p':		
 		limpaLista(_listaResultados);
@@ -67,14 +67,14 @@ void tratarEntrada(int quantidade, char evento, Lista *_listaRecipientes, Lista 
 				parar = true;
 			}
 
-			_listaAuxiliar = copiarLista(_listaResultados);			
+			_listaAuxiliar = deepCopyLista(_listaResultados);
 			numeroOperacoes++;
 		}
 		
 		printf("\n Medir\n");
 		break;
 	case 'r':
-		//listaRecipientes.remove(quantidade);
+		removeElementoLista(_listaRecipientes, quantidade);
 		printf("\n Quebrou\n");
 		break;
 	default:

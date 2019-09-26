@@ -36,7 +36,7 @@ void limpaLista(Lista *lista) {
 }
 
 
-void inserirElementoNoFim(Lista *lista, int valor) {
+void inserirElementoFim(Lista *lista, int valor) {
 	if (lista->fim == NULL) {
 		No *no = inicializaNovoNo(valor);
 		no->ant = lista->inicio;
@@ -54,7 +54,7 @@ void inserirElementoNoFim(Lista *lista, int valor) {
 	}
 }
 
-void insereElementoNaLista(Lista *lista, int valor) {
+void insereElementoLista(Lista *lista, int valor) {
 	if (lista->inicio == NULL) {
 		No *no = inicializaNovoNo(valor);
 		no->ant = NULL;
@@ -62,11 +62,32 @@ void insereElementoNaLista(Lista *lista, int valor) {
 		lista->inicio = no;
 	}
 	else {
-		inserirElementoNoFim(lista, valor);
+		inserirElementoFim(lista, valor);
 	}
 }
 
-Lista* copiarLista(Lista *lista) {
+void removeElementoLista(Lista *lista, int valor) {
+	No *no = lista->inicio;
+
+	if (valor == lista->inicio->valor) {
+		lista->inicio = lista->inicio->prox;
+		lista->inicio->ant = NULL;
+	}
+	else if (valor == lista->fim->valor) {
+		lista->fim = lista->fim->ant;
+		lista->fim->prox = NULL;
+	} else {
+		while (no->prox != NULL) {
+			if (no->valor == valor) {
+				no->ant->prox = no->prox;
+				no->prox->ant = no->ant;
+				break;
+			}
+		}
+	}	
+}
+
+Lista* deepCopyLista(Lista *lista) {
 	Lista *novaLista = new Lista();
 
 	No *noInicio = inicializaNovoNo(lista->inicio->valor);
