@@ -9,9 +9,15 @@ int main()
 {
 	int quantidade;
 	char evento;
-	inicializarListas();
+	Lista *_listaRecipientes = new Lista();
+	Lista *_listaResultados = new Lista();;
+	Lista *_listaAuxiliar = new Lista();;
+	iniciaListaRecipientes(_listaRecipientes);
+	inicia(_listaResultados);
+	inicia(_listaAuxiliar);
+
 	while (scanf("%d %c", &quantidade, &evento) != EOF) {
-		tratarEntrada(quantidade, evento);
+		tratarEntrada(quantidade, evento, _listaRecipientes, _listaResultados, _listaAuxiliar);
 	}
 	return 0;
 }
