@@ -12,92 +12,71 @@ struct lista {
 
 typedef struct lista Lista;
 
-void insereListaRecipientes(Lista *lista, int valor) {
-	if (lista->inicio == NULL) {
-		No *no = new No();
-		no->valor = valor;
-		no->ant = NULL;
-		no->prox = lista->fim;
-		lista->inicio = no;
-	}
-	else if (lista->fim == NULL) {
-		No *no = new No();
-		no->valor = valor;
-		no->ant = lista->inicio;
-		lista->inicio->prox = no;
-		no->prox == NULL;
-		lista->fim = no;
-	}
-	else {
-		No *no = new No();
-		no->valor = valor;
-
-		lista->fim->prox = no;
-		no->ant = lista->fim;
-		no->prox = NULL;
-		lista->fim = no;
-	}
+No* inicializaNovoNo(int valor) {
+	No *no = new No();
+	no->valor = valor;
+	return no;
 }
 
 void iniciaListaRecipientes(Lista *lista) {
 	lista->inicio = lista->fim = NULL;
 }
 
-void inicia(Lista *lista) {
-	No *noInicio = new No();
-	noInicio->valor = 0;
+void iniciaLista(Lista *lista) {
+	No *noInicio = inicializaNovoNo(0);
 	noInicio->ant = NULL;
 	lista->fim = NULL;
 	noInicio->prox = lista->fim;
 	lista->inicio = noInicio;
 }
 
-void push_back(Lista *lista, int valor) {
+void limpaLista(Lista *lista) {
+	lista->fim = NULL;
+	lista->inicio->prox = lista->fim;
+}
+
+
+void inserirElementoNoFim(Lista *lista, int valor) {
 	if (lista->fim == NULL) {
-		No *no = new No();
-		no->valor = valor;
+		No *no = inicializaNovoNo(valor);
 		no->ant = lista->inicio;
 		lista->inicio->prox = no;
 		no->prox == NULL;
 		lista->fim = no;
 	}
 	else {
-		No *no = new No();
-		no->valor = valor;
+		No *no = inicializaNovoNo(valor);
 
 		lista->fim->prox = no;
 		no->ant = lista->fim;
 		no->prox = NULL;
 		lista->fim = no;
-	}		
+	}
 }
 
-void clear(Lista *lista) {
-	No *no, *aux;
-	no = lista->inicio;
-	while (no != NULL)
-	{
-		aux = no;
-		no = no->prox;
-		free(aux);
+void insereElementoNaLista(Lista *lista, int valor) {
+	if (lista->inicio == NULL) {
+		No *no = inicializaNovoNo(valor);
+		no->ant = NULL;
+		no->prox = lista->fim;
+		lista->inicio = no;
 	}
-	lista->inicio = NULL;
-	lista->fim = NULL;
+	else {
+		inserirElementoNoFim(lista, valor);
+	}
 }
 
 Lista* copiarLista(Lista *lista) {
 	Lista *novaLista = new Lista();
 
-	No* noInicio = new No();
-	noInicio->valor = lista->inicio->valor;
+	No *noInicio = inicializaNovoNo(lista->inicio->valor);
 	noInicio->ant = NULL;
 	novaLista->inicio = noInicio;
 
 	No* iterator = lista->inicio->prox;
 
 	while (iterator != NULL) {
-		No* novoNo = new No();
-		novoNo->valor = iterator->valor;
+		No *novoNo = inicializaNovoNo(iterator->valor);
 		novoNo->prox = NULL;
 
 		if (novaLista->fim == NULL) {
