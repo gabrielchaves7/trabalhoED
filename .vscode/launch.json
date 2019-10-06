@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/output.exe",
+            "program": "${workspaceFolder}/src/gabriel_chaves/output.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

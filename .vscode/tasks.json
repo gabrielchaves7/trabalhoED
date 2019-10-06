@@ -6,7 +6,7 @@
           "type": "shell",
           "command": "g++",
           "args": [
-              "-g", "C:/workfolder/trabalhoED/src/main.cpp"
+              "-g", "C:/workfolder/trabalhoED/gabriel_chaves/src/main.cpp"
           ],
           "group": {
               "kind": "build",
